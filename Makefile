@@ -38,7 +38,7 @@ LDFLAGS         = -nostdlib \
 
 all: $(TARGET)
 
-minboot.so: $(OBJS)
+$(PROJECT_NAME).so: $(OBJS)
 	ld $(LDFLAGS) $(OBJS) -o $@ -lefi -lgnuefi
 
 $(OBJS):%.o:%.c
@@ -60,4 +60,4 @@ qemu: $(TARGET)
 	uefi-run -b $(OVMF) $(TARGET)
 
 clean:
-	rm $(TARGET) minboot.so $(OBJS)
+	rm $(TARGET) $(PROJECT_NAME).so $(OBJS)
